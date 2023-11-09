@@ -3,7 +3,13 @@ pipeline{
     stages{
         stage('Make directory'){
             steps{
-                sh "mkdir ~/jenkins-test || true"
+                sh "mkdir ~/jenkins-test"
+
+            post {
+                failure {
+                    echo 'some message'
+                }
+            }
             }
         }
         stage('make files'){
